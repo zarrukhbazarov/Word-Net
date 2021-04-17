@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.io.*;
 public class ShortestCommonAncestor {
     Digraph graph;
 
@@ -86,8 +86,22 @@ public class ShortestCommonAncestor {
         return cv;
     }
 
-    // unit testing (required)
-    public static void main(String[] args) {
+    // unit testing (required), given by Professor WU
+    //copied testing for now, NEED to CHECK, not checked yet !!!
+    public static void main(String[] args) throws FileNotFoundException {
+        File inFile = new File("digraph1.txt");
+        Scanner input = new Scanner(inFile);
+        Digraph G = new Digraph(input);
+
+        ShortestCommonAncestor sca = new ShortestCommonAncestor(G);
+        Scanner input1 = new Scanner(System.in);
+        while (input1.hasNext()) {
+            int v = input1.nextInt();
+            int w = input1.nextInt();
+            int length   = sca.length(v, w);
+            int ancestor = sca.ancestor(v, w);
+            System.out.printf("length = %d, ancestor = %d\n", length, ancestor);
+        }
 
     }
 
